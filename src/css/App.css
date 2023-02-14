@@ -1,0 +1,179 @@
+:root {
+  --logo-width: 150px;
+  --logo-padding: calc(((var(--nav) - var(--padding)) - var(--logo-width)) / 2);
+  --padding: 1rem;
+  --half-padding: calc(var(--padding) / 2);
+  --nav: 25%;
+  --tablet-section: 75%;
+  --desktop-section: 50%;
+
+  --afteryule-l: #eff9ff;
+  --afteryule-d: #1a3546;
+
+  --light: var(--afteryule-l);
+  --dark: var(--afteryule-d);
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  line-height: 1.4;
+  background-color: var(--light);
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body, body a {
+  color: var(--dark);
+}
+
+header {
+  background-image: url('../images/baumkrone-sillhouette.jpg');
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+header section {
+  color: var(--light);
+}
+header section p {font-size: 1.5rem;}
+
+header section p, h2 {
+  text-decoration: underline;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 5px;
+}
+
+header section p span {
+  background-color: var(--dark);
+  opacity: 0.9;
+}
+
+nav, svg, nav ul, section {box-sizing: border-box}
+
+nav {
+  width: 100%;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  position: fixed;
+}
+nav li {text-align: center;}
+nav a {
+  text-decoration: none;
+  color: var(--light);
+  padding: 0 var(--half-padding);
+  margin: 0 var( --half-padding) var( --padding) 0;
+  display: inline-block;
+  background-color: var(--dark);
+}
+
+svg#Logo {max-width: calc(var(--logo-width) * 0.75);}
+svg#Logo path {fill: var(--light)}
+svg#Logo circle {fill: var(--dark)}
+
+section,
+footer {padding: var(--padding);}
+footer {
+  display: flex;
+  background-color: var(--dark);
+  color: var(--light);
+  flex-direction: column;
+  row-gap: var(--half-padding);
+  column-gap: var(--padding);
+}
+footer, footer button {font-size: 0.8rem}
+button {
+  border: 0;
+  padding: 0 var( --half-padding);
+  background-color: var(--light);
+  color: var(--dark);
+  font-family: 'Lora', serif;
+}
+footer a {color: var(--light)}
+footer p {margin: 0}
+footer .col:first-child {min-width: calc(var(--nav) - var(--half-padding))}
+
+#toggle {
+  z-index: 11;
+  position: fixed;
+  right: var(--padding);
+}
+
+#menu {z-index: 10;}
+
+#mob-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 300px) {
+  header section p {font-size: 1.5rem;}
+}
+
+@media screen and (max-width: 735px) {
+  header {position: relative;}
+  nav {text-align: center}
+  nav ul {
+    margin: 0 0 0 100vw;
+    transition: margin 1s;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--light);
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #mob-nav {padding: var(--padding);}
+}
+
+/* Tablet breakpoint */
+@media screen and (min-width: 735px) {
+  header {
+    position: relative;
+    flex-direction: row;
+  }
+  nav {
+    padding-right: 0 !important;
+    align-self: flex-start;
+    top: 0;
+  }
+  svg {position: fixed;}
+  section {
+    width: calc(100% - var(--nav));
+    margin-left: var(--nav);
+  }
+  svg#Logo {
+    mix-blend-mode: hard-light;
+    margin-top: var(--padding);
+    max-width: var(--logo-width);
+    padding-left: var(--padding);
+  }
+  nav ul {
+    width: var(--tablet-section);
+    margin-left: calc(var(--nav) + var(--padding));
+    margin-top: var(--padding);
+  }
+  nav ul li {display: inline-block;}
+  header section p {font-size: 2rem;}
+  #toggle {display: none;}
+  footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/* Desktop breakpoint */
+@media screen and (min-width: 1080px) {
+  section {width: var(--desktop-section)}
+}
+
+nav a:hover, button:hover, svg:hover {
+  transform: rotate(2deg);
+}
