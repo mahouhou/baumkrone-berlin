@@ -7,11 +7,71 @@
   --tablet-section: 75%;
   --desktop-section: 50%;
 
-  --afteryule-l: #eff9ff;
-  --afteryule-d: #1a3546;
+  --default-l: #EFF9FF;
+  --default-d: #1A3546;
 
-  --light: var(--afteryule-l);
-  --dark: var(--afteryule-d);
+  --light: var(--default-l);
+  --dark: var(--default-d);
+
+  --january-waxes-1: #FEFCFF;
+  --january-waxes-d: #0E0034;
+  --february-wanes-l: #FEFCFF;
+  --february-wanes-d: #0E0034;
+
+  --february-waxes-l: #FFFFF3;
+  --february-waxes-d: #3F534A;
+  --march-wanes-l: #FFFFF3;
+  --march-wanes-d: #3F534A;
+
+  --march-waxes-l: #8FC9FF;
+  --march-waxes-d: #003709;
+  --april-wanes-l: #8FC9FF;
+  --april-wanes-d: #003709;
+
+  --april-waxes-l: #C0E0B1;
+  --april-waxes-d: #201CFF;
+  --may-wanes-l: #C0E0B1;
+  --may-wanes-d: #201CFF;
+
+  --may-waxes-l: #FFEAF5;
+  --may-waxes-d: #00C92C;
+  --june-wanes-l: #FFEAF5;
+  --june-wanes-d: #00C92C;
+
+  --june-waxes-l: #FEFFC6;
+  --june-waxes-d: #0085FF;
+  --july-wanes-l: #FEFFC6;
+  --july-wanes-d: #0085FF;
+
+  --july-waxes-l: #FFDC62;
+  --july-waxes-d: #C90000;
+  --august-wanes-l: #FFDC62;
+  --august-wanes-d: #C90000;
+
+  --august-waxes-l: #FFA450;
+  --august-waxes-d: #CD01A0;
+  --september-wanes-l: #FFA450;
+  --september-wanes-d: #CD01A0;
+
+  --september-waxes-l: #FFFB8F;
+  --september-waxes-d: #7140FF;
+  --october-wanes-l: #FFFB8F;
+  --october-wanes-d: #7140FF;
+
+  --october-waxes-l: #CDCFFF;
+  --october-waxes-d: #008171;
+  --november-wanes-l: #CDCFFF;
+  --november-wanes-d: #008171;
+
+  --november-waxes-l: #F8FFE9;
+  --november-waxes-d: #9F0026;
+  --december-wanes-l: #F8FFE9;
+  --december-wanes-d: #9F0026;
+
+  --december-waxes-l: #FF90A4;
+  --december-waxes-d: #005C09;
+  --january-wanes-l: #FF90A4;
+  --january-wanes-d: #005C09;
 }
 
 body {

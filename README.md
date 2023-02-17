@@ -1,11 +1,18 @@
 ## BaumKrone Business Website
 
-View this website live at (baumkrone-berlin.de)[https://baumkrone-berlin.de/].
+View this website live at [baumkrone-berlin.de](https://baumkrone-berlin.de/).
 
-BaumKrone Berlin is a web application built using create-react-app, by Freja Smith. I have utilised code from the (Saxon Date project)[https://github.com/realjhoo/saxon-date-web], by Jerry Hoover.
+BaumKrone Berlin is a web application built using create-react-app, by Freja Smith.
 
 ## A Seasonal Website
 
-BaumKrone Berlin is tree surgery business. Since their work is largely dictated by the seasons I wanted to bring this feature to the website. I decided to use a traditional lunar calendar system, the Saxon calendar, to calculate time because this is more closely related to the natural environment and seasonal events that trees respond to.
+BaumKrone Berlin is a tree surgery business. Since their work is largely dictated by the seasons I wanted to bring some of this seasonality to the design. I decided to incorporate a lunar calendar via [Suncalc](https://github.com/mourner/suncalc) and have this influence the style.
 
-Currently I am only using this calendar to display today's Saxon date in the footer, however I plan to develop a colour scheme that fluctuates according to the current Saxon month.
+The design includes 12 x 2-colour themes, one for each month. Each new theme changes to the next with the new moon.
+
+## Future Designs
+
+I plan to also develop the following features:
+- A switch for users to select a muted colour palette in case they find the colours overwhelming, with a dark/ light mode choice.
+- A function that sets the stronger colour as the background during the night, and the lighter colour during the day.
+- A function that changes the header image to another seasonal image each month.

@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
-import './css/App.css';
-import { ReactComponent as Logo } from './images/baumkrone-logo-bg.svg';
-import Calendar from './Calendar';
-import Copy from './Copy';
-import Impressum from './Impressum';
+import "./css/App.css";
+import { ReactComponent as Logo } from "./images/baumkrone-logo-bg.svg";
+// import Calendar from './Calendar';
+import Copy from "./Copy";
+import Impressum from "./Impressum";
+// https://github.com/mourner/suncalc
 
 function App() {
-  // Today's saxon month
-  const [today, setToday] = useState(0);
+  // Today's lunar month
+  const [today, setToday] = useState("default");
   // Impressum component hidden by default
   const [impressum, setImpressum] = useState(false);
   // Mobile menu closed by default
   const [menuOpen, setMenuOpen] = useState(false);
   // Width of body in px
   const [width, setWidth] = useState(undefined);
+
+  var SunCalc = require("suncalc");
 
   // Variables used by startTouch and moveTouch event handlers
   var initialX = null;
@@ -34,30 +37,82 @@ function App() {
     const width = document.querySelector("body").offsetWidth;
     setWidth(width);
     // Update today state
-    getSaxMon();
+    getLunarMonth()
+    // getSaxMon();
   }, []);
 
-    // Get current Saxon month from Calendar component via DOM
-    function getSaxMon() {
-      const date = document.getElementById("saxon-date").innerHTML;
-      const dateArray = date.split(' ');
-      const month = dateArray[2];
-      setToday(month);
+  // Get current Saxon month from Calendar component via DOM
+  // function getSaxMon() {
+  //   const date = document.getElementById("saxon-date").innerHTML;
+  //   const dateArray = date.split(' ');
+  //   const month = dateArray[2];
+  //   setToday(month);
+  // }
+
+  function getMoonPhase() {
+    const moonObj = SunCalc.getMoonIllumination(new Date());
+    const moonFraction = moonObj.phase;
+    var moonPhase = "";
+    if (moonFraction == 0) {
+      // New Moon
+      moonPhase = "Neumond";
     }
+    if (moonFraction > 0 && moonFraction < 0.25) {
+      // Waxing Crescent
+      moonPhase = "Zunehmender Halbmond";
+    }
+    if (moonFraction == 0.25) {
+      // First Quarter
+      moonPhase = "Erstes Viertel";
+    }
+    if (moonFraction > 0.25 && moonFraction < 0.5) {
+      // Waxing Moon
+      moonPhase = "Zunehmender Mond";
+    }
+    if (moonFraction == 0.5) {
+      // Full Moon
+      moonPhase = "Vollmond";
+    }
+    if (moonFraction > 0.5 && moonFraction < 0.75) {
+      // Waning Moon
+      moonPhase = "Abnehmender Mond";
+    }
+    if (moonFraction == 0.75) {
+      // Last Quarter
+      moonPhase = "Letztes Quartal";
+    }
+    if (moonFraction > 0.75 && moonFraction < 1) {
+      // Waning Crescent
+      moonPhase = "Abnehmender Halbmond";
+    }
+    document.querySelector(":root").style.setProperty('--light', `var(--${today}-l)`);
+    document.querySelector(":root").style.setProperty('--dark', `var(--${today}-d)`);
+    return moonPhase;
+  }
+
+  function getLunarMonth() {
+    const months = ["january","february","march","april","may","june","july","august","september","october","november","december"];
+    let month = months[new Date().getMonth()];
+    const moonObj = SunCalc.getMoonIllumination(new Date());
+    const moonAngle = moonObj.angle;
+    const waxWane = (moonAngle >= 0) ? "wanes" : "waxes";
+    var lunarMonth = month + "-" + waxWane;
+    setToday(lunarMonth);
+  }
 
   // Called when user resizes window
   function handleResize() {
     // Update width state every time window is resized
     const body = document.querySelector("body");
     const width = body.offsetWidth;
-    setWidth(width)
+    setWidth(width);
     nav = document.querySelector("#menu");
     // On desktop:
     if (width > 735) {
       // Reset margins and state
       nav.style.marginLeft = "calc(var(--nav) + var(--padding))";
       setMenuOpen(false);
-    // On tablet and mobile:
+      // On tablet and mobile:
     } else {
       // Close mobile menu
       nav.style.marginLeft = "100vw";
@@ -70,15 +125,15 @@ function App() {
   useEffect(() => {
     const body = document.querySelector("body");
     // Mobile menu is open:
-    if (menuOpen && (width < 735)) {
+    if (menuOpen && width < 735) {
       // Hide overflow
       body.style.overflow = "hidden";
-    // Menu is closed or viewing on desktop:
+      // Menu is closed or viewing on desktop:
     } else {
       // Set overflow back to auto
       body.style.overflowY = "auto";
     }
-  }, [menuOpen])
+  }, [menuOpen]);
 
   // Runs every time menu nav buttons are clicked
   function handleMenu() {
@@ -86,8 +141,8 @@ function App() {
     // On desktop:
     if (width > 735) {
       // Reset state
-      setMenuOpen(false)
-    // On Tablet and mobile:
+      setMenuOpen(false);
+      // On Tablet and mobile:
     } else {
       if (menuOpen) {
         // Close menu
@@ -123,14 +178,14 @@ function App() {
       // sliding horizontally
       if (diffX > 0) {
         // swiped left
-        handleMenu()
+        handleMenu();
       } else {
         // swiped right
         // handleMenu()
         setMenuOpen(false);
         nav = document.querySelector("#menu");
         nav.style.marginLeft = "100vw";
-      }  
+      }
     } else {
       // sliding vertically
       if (diffY > 0) {
@@ -139,18 +194,20 @@ function App() {
       } else {
         // swiped down
         console.log("swiped down");
-      }  
+      }
     }
     initialX = null;
     initialY = null;
     e.preventDefault();
-  };
+  }
 
   // Set impressum state to show/hide Impressum component
   function showImpressum() {
-    setImpressum(true)}
+    setImpressum(true);
+  }
   function hideImpressum() {
-    setImpressum(false)}
+    setImpressum(false);
+  }
 
   // Runs when nav buttons in header and footer are clicked
   const handleClick = (event, source) => {
@@ -160,13 +217,15 @@ function App() {
       hideImpressum();
       handleMenu();
     }
-  }
+  };
 
   // Map menuData to construct navigation
   const Menu = menuData.map((li) => (
     <li key={li}>
-      <a  onClick={(event) => handleClick(event, {li})} 
-          href={`/#${li.split(" ").join("-").toLowerCase()}`}>
+      <a
+        onClick={(event) => handleClick(event, { li })}
+        href={`/#${li.split(" ").join("-").toLowerCase()}`}
+      >
         {li}
       </a>
     </li>
@@ -179,45 +238,52 @@ function App() {
           <div id="mob-nav">
             <Logo />
             <button id="toggle" onClick={handleMenu}>
-              {menuOpen ?
-              <span>&rarr; MENU</span> : <span>&larr; MENU</span> }
+              {menuOpen ? <span>&rarr; MENU</span> : <span>&larr; MENU</span>}
             </button>
           </div>
           <ul id="menu">{Menu}</ul>
         </nav>
-        <section>  
-          <p><span>
-            Jeder Baum ist einzigartig!
-            Deshalb variieren die Preise für unsere Leistungen-
-            je nachdem, wie groß die Aufgabe. Rufen Sie an,
-            um einen gratis Beratungstermin auszumachen,
-            vor Ort, an ihrem Baum!
-          </span></p>
+        <section>
+          <p>
+            <span>
+              Jeder Baum ist einzigartig! Deshalb variieren die Preise für
+              unsere Leistungen- je nachdem, wie groß die Aufgabe. Rufen Sie an,
+              um einen gratis Beratungstermin auszumachen, vor Ort, an ihrem
+              Baum!
+            </span>
+          </p>
         </section>
       </header>
       <main>
-        <section style={impressum ? {display: "none"} : {display: "block"}}>
+        <section style={impressum ? { display: "none" } : { display: "block" }}>
           <Copy />
         </section>
-        <section style={impressum ? {display: "block"} : {display: "none"}}>
+        <section style={impressum ? { display: "block" } : { display: "none" }}>
           <Impressum />
         </section>
       </main>
       <footer>
         <div className="col">
-          <p id="copyright">Urheberrecht &copy; BaumKrone {new Date().getFullYear()}</p>
-          <a  href="/#impressum" 
-              onClick={(event) => handleClick(event, "IMPRESSUM")}>
-              IMPRESSUM 
+          <p id="copyright">
+            Urheberrecht &copy; BaumKrone {new Date().getFullYear()}
+          </p>
+          <a
+            href="/#impressum"
+            onClick={(event) => handleClick(event, "IMPRESSUM")}
+          >
+            IMPRESSUM
           </a>
         </div>
         <div className="col">
           {/* <p>This website is seasonal: <a href="#">View on Github</a></p> */}
-          <p>Das heutige sächsische Datum: <span id="saxon-date"><Calendar /></span></p>
+          {/* <p>Das heutige sächsische Datum: <span id="saxon-date"><Calendar /></span></p> */}
+          <p>Heutige Mondphase: {getMoonPhase()}</p>
         </div>
         <div className="col">
           {/* <div id="wcb" className="carbonbadge"></div> */}
-          <p>Design von <a href="#">Cascading Styles</a></p>
+          <p>
+            Design von <a href="#">Cascading Styles</a>
+          </p>
         </div>
       </footer>
     </div>
@@ -231,5 +297,5 @@ const menuData = [
   "BAUMPFLEGE",
   "OBSTBAUMPFLEGE",
   "FÄLLUNG UND PFLANZUNG",
-  "ÜBER UNS"
-]
+  "ÜBER UNS",
+];
