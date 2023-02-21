@@ -89,8 +89,9 @@ body, body a {
 }
 
 header {
-  background-image: url('../images/baumkrone-sillhouette.jpg');
+  background-image: url('../images/baumkrone-high.jpg');
   background-size: cover;
+  background-position: center;
   min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
@@ -111,7 +112,7 @@ header section p span {
   opacity: 0.9;
 }
 
-nav, svg, nav ul, section {box-sizing: border-box}
+nav, svg#Logo, nav ul, section {box-sizing: border-box}
 
 nav {
   width: 100%;
@@ -204,7 +205,7 @@ footer .col:first-child {min-width: calc(var(--nav) - var(--half-padding))}
     align-self: flex-start;
     top: 0;
   }
-  svg {position: fixed;}
+  svg#Logo {position: fixed;}
   section {
     width: calc(100% - var(--nav));
     margin-left: var(--nav);
@@ -234,6 +235,25 @@ footer .col:first-child {min-width: calc(var(--nav) - var(--half-padding))}
   section {width: var(--desktop-section)}
 }
 
-nav a:hover, button:hover, svg:hover {
+nav a:hover, button:hover, svg#Logo:hover {
   transform: rotate(2deg);
+}
+
+svg#NewMoon,
+svg#WaxCrescent,
+svg#FirstQuart,
+svg#WaxGibb,
+svg#FullMoon,
+svg#WaneGibb,
+svg#LastQuart,
+svg#WaneCrescent {
+  max-height: 1em;
+}
+
+svg .light {
+  fill: var(--light);
+}
+
+svg .moon {
+  fill: var(--dark);
 }

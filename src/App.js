@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
 import "./css/App.css";
-import { ReactComponent as Logo } from "./images/baumkrone-logo-bg.svg";
-// import Calendar from './Calendar';
 import Copy from "./Copy";
 import Impressum from "./Impressum";
+import { ReactComponent as Logo } from "./images/baumkrone-logo-bg.svg";
+import { ReactComponent as NewMoon } from "./images/moons/Moon-Phases-01.svg";
+import { ReactComponent as WaneCrescent } from "./images/moons/Moon-Phases-02.svg";
+import { ReactComponent as LastQuart } from "./images/moons/Moon-Phases-03.svg";
+import { ReactComponent as WaneGibb } from "./images/moons/Moon-Phases-04.svg";
+import { ReactComponent as FullMoon } from "./images/moons/Moon-Phases-05.svg";
+import { ReactComponent as WaxGibb } from "./images/moons/Moon-Phases-06.svg";
+import { ReactComponent as FirstQuart } from "./images/moons/Moon-Phases-07.svg";
+import { ReactComponent as WaxCrescent } from "./images/moons/Moon-Phases-08.svg";
 // https://github.com/mourner/suncalc
 
 function App() {
@@ -17,6 +24,7 @@ function App() {
   const [width, setWidth] = useState(undefined);
 
   var SunCalc = require("suncalc");
+  var timeNow = new Date();
 
   // Variables used by startTouch and moveTouch event handlers
   var initialX = null;
@@ -37,67 +45,96 @@ function App() {
     const width = document.querySelector("body").offsetWidth;
     setWidth(width);
     // Update today state
-    getLunarMonth()
-    // getSaxMon();
+    getLunarMonth();
   }, []);
 
-  // Get current Saxon month from Calendar component via DOM
-  // function getSaxMon() {
-  //   const date = document.getElementById("saxon-date").innerHTML;
-  //   const dateArray = date.split(' ');
-  //   const month = dateArray[2];
-  //   setToday(month);
-  // }
+  // Calculate which lunar month today is
+  // Months are divided by New Moon
+  // Then update today state with lunarMonth value
+  function getLunarMonth() {
+    const months = [
+      "january",
+      "february",
+      "march",
+      "april",
+      "may",
+      "june",
+      "july",
+      "august",
+      "september",
+      "october",
+      "november",
+      "december",
+    ];
+    let month = months[timeNow.getMonth()];
+    const moonObj = SunCalc.getMoonIllumination(timeNow);
+    const moonAngle = moonObj.angle;
+    const waxWane = moonAngle >= 0 ? "wanes" : "waxes";
+    var lunarMonth = month + "-" + waxWane;
+    setToday(lunarMonth);
+  }
 
+  // Calculate whether it's day or night in Berlin
+  // Set theme based on today state (lunar month) and night/day
+  function getTheme() {
+    const nightBerlin = SunCalc.getTimes(timeNow, 52.520008, 13.404954);
+    const nightStart = nightBerlin.night;
+    const nightEnds = nightBerlin.nightEnd;
+    if (timeNow >= nightStart && timeNow <= nightEnds) {
+      // Night
+      document
+        .querySelector(":root")
+        .style.setProperty("--light", `var(--${today}-d)`);
+      document
+        .querySelector(":root")
+        .style.setProperty("--dark", `var(--${today}-l)`);
+    } else {
+      // Day
+      document
+        .querySelector(":root")
+        .style.setProperty("--light", `var(--${today}-l)`);
+      document
+        .querySelector(":root")
+        .style.setProperty("--dark", `var(--${today}-d)`);
+    }
+  }
+
+  // Calculate moon phase and place icon in footer
   function getMoonPhase() {
-    const moonObj = SunCalc.getMoonIllumination(new Date());
+    const moonObj = SunCalc.getMoonIllumination(timeNow);
     const moonFraction = moonObj.phase;
-    var moonPhase = "";
     if (moonFraction == 0) {
       // New Moon
-      moonPhase = "Neumond";
+      return <NewMoon />;
     }
     if (moonFraction > 0 && moonFraction < 0.25) {
       // Waxing Crescent
-      moonPhase = "Zunehmender Halbmond";
+      return <WaxCrescent />;
     }
     if (moonFraction == 0.25) {
       // First Quarter
-      moonPhase = "Erstes Viertel";
+      return <FirstQuart />;
     }
     if (moonFraction > 0.25 && moonFraction < 0.5) {
       // Waxing Moon
-      moonPhase = "Zunehmender Mond";
+      return <WaxGibb />;
     }
     if (moonFraction == 0.5) {
       // Full Moon
-      moonPhase = "Vollmond";
+      return <FullMoon />;
     }
     if (moonFraction > 0.5 && moonFraction < 0.75) {
       // Waning Moon
-      moonPhase = "Abnehmender Mond";
+      return <WaneGibb />;
     }
     if (moonFraction == 0.75) {
       // Last Quarter
-      moonPhase = "Letztes Quartal";
+      return <LastQuart />;
     }
     if (moonFraction > 0.75 && moonFraction < 1) {
       // Waning Crescent
-      moonPhase = "Abnehmender Halbmond";
+      return <WaneCrescent />;
     }
-    document.querySelector(":root").style.setProperty('--light', `var(--${today}-l)`);
-    document.querySelector(":root").style.setProperty('--dark', `var(--${today}-d)`);
-    return moonPhase;
-  }
-
-  function getLunarMonth() {
-    const months = ["january","february","march","april","may","june","july","august","september","october","november","december"];
-    let month = months[new Date().getMonth()];
-    const moonObj = SunCalc.getMoonIllumination(new Date());
-    const moonAngle = moonObj.angle;
-    const waxWane = (moonAngle >= 0) ? "wanes" : "waxes";
-    var lunarMonth = month + "-" + waxWane;
-    setToday(lunarMonth);
   }
 
   // Called when user resizes window
@@ -233,6 +270,7 @@ function App() {
 
   return (
     <div className="App">
+      {getTheme()}
       <header>
         <nav>
           <div id="mob-nav">
@@ -276,11 +314,10 @@ function App() {
         </div>
         <div className="col">
           {/* <p>This website is seasonal: <a href="#">View on Github</a></p> */}
-          {/* <p>Das heutige sächsische Datum: <span id="saxon-date"><Calendar /></span></p> */}
           <p>Heutige Mondphase: {getMoonPhase()}</p>
         </div>
         <div className="col">
-          {/* <div id="wcb" className="carbonbadge"></div> */}
+          <div id="wcb" className="carbonbadge"></div>
           <p>
             Design von <a href="#">Cascading Styles</a>
           </p>
