@@ -4,13 +4,14 @@ import Copy from "./Copy";
 import Impressum from "./Impressum";
 import { ReactComponent as Logo } from "./images/baumkrone-logo-bg.svg";
 import { ReactComponent as NewMoon } from "./images/moons/Moon-Phases-01.svg";
-import { ReactComponent as WaneCrescent } from "./images/moons/Moon-Phases-02.svg";
-import { ReactComponent as LastQuart } from "./images/moons/Moon-Phases-03.svg";
-import { ReactComponent as WaneGibb } from "./images/moons/Moon-Phases-04.svg";
+import { ReactComponent as WaxCrescent } from "./images/moons/Moon-Phases-02.svg";
+import { ReactComponent as FirstQuart } from "./images/moons/Moon-Phases-03.svg";
+import { ReactComponent as WaxGibb } from "./images/moons/Moon-Phases-04.svg";
 import { ReactComponent as FullMoon } from "./images/moons/Moon-Phases-05.svg";
-import { ReactComponent as WaxGibb } from "./images/moons/Moon-Phases-06.svg";
-import { ReactComponent as FirstQuart } from "./images/moons/Moon-Phases-07.svg";
-import { ReactComponent as WaxCrescent } from "./images/moons/Moon-Phases-08.svg";
+import { ReactComponent as WaneGibb } from "./images/moons/Moon-Phases-06.svg";
+import { ReactComponent as LastQuart } from "./images/moons/Moon-Phases-07.svg";
+import { ReactComponent as WaneCrescent } from "./images/moons/Moon-Phases-08.svg";
+import { ReactComponent as Pomologen } from "./images/pomologen-01.svg";
 // https://github.com/mourner/suncalc
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   // Width of body in px
   const [width, setWidth] = useState(undefined);
+  // Day or night in Berlin
+  const [isDay, setIsDay] = useState(true);
 
   var SunCalc = require("suncalc");
   var timeNow = new Date();
@@ -46,6 +49,8 @@ function App() {
     setWidth(width);
     // Update today state
     getLunarMonth();
+    // Update isDay state
+    checkIsDay();
   }, []);
 
   // Calculate which lunar month today is
@@ -76,26 +81,21 @@ function App() {
 
   // Calculate whether it's day or night in Berlin
   // Set theme based on today state (lunar month) and night/day
-  function getTheme() {
+  function checkIsDay() {
     const nightBerlin = SunCalc.getTimes(timeNow, 52.520008, 13.404954);
-    const nightStart = nightBerlin.night;
-    const nightEnds = nightBerlin.nightEnd;
-    if (timeNow >= nightStart && timeNow <= nightEnds) {
-      // Night
-      document
-        .querySelector(":root")
-        .style.setProperty("--light", `var(--${today}-d)`);
-      document
-        .querySelector(":root")
-        .style.setProperty("--dark", `var(--${today}-l)`);
-    } else {
+    // const nightBerlin = SunCalc.getTimes(timeNow, 64.73424, 177.5103);
+    const nightStarts = Number(nightBerlin.night);
+    const nightEnds = Number(nightBerlin.nightEnd);
+    const timeNumber = Number(timeNow);
+    if (nightEnds <= timeNumber && timeNumber < nightStarts) {
       // Day
-      document
-        .querySelector(":root")
-        .style.setProperty("--light", `var(--${today}-l)`);
-      document
-        .querySelector(":root")
-        .style.setProperty("--dark", `var(--${today}-d)`);
+      setIsDay(true);
+    } else if (timeNumber < nightEnds && nightEnds < nightStarts) {
+      // Night
+      setIsDay(false);
+    } else {
+      // Set day
+      setIsDay(true);
     }
   }
 
@@ -147,7 +147,8 @@ function App() {
     // On desktop:
     if (width > 735) {
       // Reset margins and state
-      nav.style.marginLeft = "calc(var(--nav) + var(--padding))";
+      // nav.style.marginLeft = "calc(var(--nav) + var(--padding))";
+      nav.style.marginLeft = "var(--nav)";
       setMenuOpen(false);
       // On tablet and mobile:
     } else {
@@ -256,6 +257,11 @@ function App() {
     }
   };
 
+  const handleToggle = () => {
+    console.log("toggled");
+    setIsDay((prev) => !prev);
+  }
+
   // Map menuData to construct navigation
   const Menu = menuData.map((li) => (
     <li key={li}>
@@ -269,8 +275,7 @@ function App() {
   ));
 
   return (
-    <div className="App">
-      {getTheme()}
+    <div className={`App ${today + " " + (isDay ? "day" : "night")}`}>
       <header>
         <nav>
           <div id="mob-nav">
@@ -279,7 +284,18 @@ function App() {
               {menuOpen ? <span>&rarr; MENU</span> : <span>&larr; MENU</span>}
             </button>
           </div>
-          <ul id="menu">{Menu}</ul>
+          <ul id="menu">
+            {Menu}
+            <li id="mode">
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  onClick={handleToggle}
+                />
+                <span className="slider"></span>
+              </label>
+            </li>
+          </ul>
         </nav>
         <section>
           <p>
@@ -313,13 +329,27 @@ function App() {
           </a>
         </div>
         <div className="col">
-          {/* <p>This website is seasonal: <a href="#">View on Github</a></p> */}
+          <Pomologen />
+        </div>
+        <div className="col">
+          <p>
+            Diese Website ist saisonal:{" "}
+            <a
+              target="_blank"
+              href="https://github.com/mahouhou/baumkrone-berlin"
+            >
+              Auf Github ansehen
+            </a>
+          </p>
           <p>Heutige Mondphase: {getMoonPhase()}</p>
         </div>
         <div className="col">
-          <div id="wcb" className="carbonbadge"></div>
+          {/* <carbonbadge darkMode={true} /> */}
           <p>
-            Design von <a href="#">Cascading Styles</a>
+            Design von{" "}
+            <a target="_blank" href="https://cascading-styles.com">
+              Cascading Styles
+            </a>
           </p>
         </div>
       </footer>

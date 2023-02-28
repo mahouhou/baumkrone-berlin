@@ -7,89 +7,162 @@
   --tablet-section: 75%;
   --desktop-section: 50%;
 
-  --default-l: #EFF9FF;
-  --default-d: #1A3546;
-
   --light: var(--default-l);
   --dark: var(--default-d);
 
-  --january-waxes-1: #FEFCFF;
-  --january-waxes-d: #0E0034;
-  --february-wanes-l: #FEFCFF;
-  --february-wanes-d: #0E0034;
+  /* Default theme */
+  --default-l: #eff9ff;
+  --default-d: #1a3546;
 
-  --february-waxes-l: #FFFFF3;
-  --february-waxes-d: #3F534A;
-  --march-wanes-l: #FFFFF3;
-  --march-wanes-d: #3F534A;
+  /* Jan waxes/ Feb wanes */
+  --january-l: #fefcff;
+  --january-d: #0e0034;
 
-  --march-waxes-l: #8FC9FF;
-  --march-waxes-d: #003709;
-  --april-wanes-l: #8FC9FF;
-  --april-wanes-d: #003709;
+  /* Feb waxes/ Mar wanes */
+  --february-l: #fffff3;
+  --february-d: #3f534a;
 
-  --april-waxes-l: #C0E0B1;
-  --april-waxes-d: #201CFF;
-  --may-wanes-l: #C0E0B1;
-  --may-wanes-d: #201CFF;
+  /* Mar waxes/ Apr wanes */
+  --march-l: #8fc9ff;
+  --march-d: #003709;
 
-  --may-waxes-l: #FFEAF5;
-  --may-waxes-d: #00C92C;
-  --june-wanes-l: #FFEAF5;
-  --june-wanes-d: #00C92C;
+  /* Apr waxes/ May wanes */
+  --april-l: #c0e0b1;
+  --april-d: #201cff;
 
-  --june-waxes-l: #FEFFC6;
-  --june-waxes-d: #0085FF;
-  --july-wanes-l: #FEFFC6;
-  --july-wanes-d: #0085FF;
+  /* May waxes/ Jun wanes */
+  --may-l: #ffeaf5;
+  --may-d: #00c92c;
 
-  --july-waxes-l: #FFDC62;
-  --july-waxes-d: #C90000;
-  --august-wanes-l: #FFDC62;
-  --august-wanes-d: #C90000;
+  /* Jun waxes/ Jul wanes */
+  --june-l: #feffc6;
+  --june-d: #0085ff;
 
-  --august-waxes-l: #FFA450;
-  --august-waxes-d: #CD01A0;
-  --september-wanes-l: #FFA450;
-  --september-wanes-d: #CD01A0;
+  /* Jul waxes/ Aug wanes */
+  --july-l: #ffdc62;
+  --july-d: #c90000;
 
-  --september-waxes-l: #FFFB8F;
-  --september-waxes-d: #7140FF;
-  --october-wanes-l: #FFFB8F;
-  --october-wanes-d: #7140FF;
+  /* Aug waxes/ Sep wanes */
+  --august-l: #ffa450;
+  --august-d: #cd01a0;
 
-  --october-waxes-l: #CDCFFF;
-  --october-waxes-d: #008171;
-  --november-wanes-l: #CDCFFF;
-  --november-wanes-d: #008171;
+  /* Sep waxes/ Oct wanes */
+  --september-l: #fffb8f;
+  --september-d: #7140ff;
 
-  --november-waxes-l: #F8FFE9;
-  --november-waxes-d: #9F0026;
-  --december-wanes-l: #F8FFE9;
-  --december-wanes-d: #9F0026;
+  /* Oct waxes/ Nov wanes */
+  --october-l: #cdcfff;
+  --october-d: #008171;
 
-  --december-waxes-l: #FF90A4;
-  --december-waxes-d: #005C09;
-  --january-wanes-l: #FF90A4;
-  --january-wanes-d: #005C09;
+  /* Nov waxes/ Dec wanes */
+  --november-l: #f8ffe9;
+  --november-d: #9f0026;
+
+  /* Dec waxes/ Jan wanes */
+  --december-l: #ff90a4;
+  --december-d: #005c09;
 }
+
+.january-waxes.day, .february-wanes.day {
+  --light: var(--january-l);
+  --dark: var(--january-d);}
+.january-waxes.night, .february-wanes.night {
+  --light: var(--january-d);
+  --dark: var(--january-l);}
+
+.february-waxes.day, .march-wanes.day {
+  --light: var(--february-l);
+  --dark: var(--february-d);}
+.february-waxes.night, .march-wanes.night {
+  --light: var(--february-d);
+  --dark: var(--february-l);}
+
+.march-waxes.day, .april-wanes.day {
+  --light: var(--march-l);
+  --dark: var(--march-d);}
+.march-waxes.night, .april-wanes.night {
+  --light: var(--march-d);
+  --dark: var(--march-l);}
+
+.april-waxes.day, .may-wanes.day {
+  --light: var(--april-l);
+  --dark: var(--april-d);}
+.april-waxes.night, .may-wanes.night {
+  --light: var(--april-d);
+  --dark: var(--april-l);}
+
+.may-waxes.day, .june-wanes.day {
+  --light: var(--may-l);
+  --dark: var(--may-d);}
+.may-waxes.night, .june-wanes.night {
+  --light: var(--may-d);
+  --dark: var(--may-l);}
+
+.june-waxes.day, .july-wanes.day {
+  --light: var(--june-l);
+  --dark: var(--june-d);}
+.june-waxes.night, .july-wanes.night {
+  --light: var(--june-d);
+  --dark: var(--june-l);}
+
+.july-waxes.day, .august-wanes.day {
+  --light: var(--july-l);
+  --dark: var(--july-d);}
+.july-waxes.night, .august-wanes.night {
+  --light: var(--july-d);
+  --dark: var(--july-l);}
+
+.august-waxes.day, .september-wanes.day {
+  --light: var(--august-l);
+  --dark: var(--august-d);}
+.august-waxes.night, .september-wanes.night {
+  --light: var(--august-d);
+  --dark: var(--august-l);}
+
+.september-waxes.day, .october-wanes.day {
+  --light: var(--september-l);
+  --dark: var(--september-d);}
+.september-waxes.night, .october-wanes.night {
+  --light: var(--september-d);
+  --dark: var(--september-l);}
+
+.october-waxes.day, .november-wanes.day {
+  --light: var(--october-l);
+  --dark: var(--october-d);}
+.october-waxes.night, .november-wanes.night {
+  --light: var(--october-d);
+  --dark: var(--october-l);}
+
+.november-waxes.day, .december-wanes.day {
+  --light: var(--november-l);
+  --dark: var(--november-d);}
+.november-waxes.night, .december-wanes.night {
+  --light: var(--november-d);
+  --dark: var(--november-l);}
+
+.december-waxes.day, .january-wanes.day {
+  --light: var(--december-l);
+  --dark: var(--december-d);}
+.december-waxes.night, .january-wanes.night {
+  --light: var(--december-d);
+  --dark: var(--december-l);}
 
 body {
   font-size: 16px;
-  font-family: 'Lora', serif;
+  font-family: "Lora", serif;
   font-weight: 500;
   line-height: 1.4;
-  background-color: var(--light);
   width: 100vw;
   overflow-x: hidden;
 }
 
-body, body a {
-  color: var(--dark);
-}
+.App {background-color: var(--light);}
+
+main,
+main a {color: var(--dark);}
 
 header {
-  background-image: url('../images/baumkrone-high.jpg');
+  background-image: url("../images/baumkrone-high.jpg");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -99,9 +172,12 @@ header {
 header section {
   color: var(--light);
 }
-header section p {font-size: 1.5rem;}
+header section p {
+  font-size: 1.5rem;
+}
 
-header section p, h2 {
+header section p,
+h2 {
   text-decoration: underline;
   text-decoration-thickness: 5px;
   text-underline-offset: 5px;
@@ -112,33 +188,52 @@ header section p span {
   opacity: 0.9;
 }
 
-nav, svg#Logo, nav ul, section {box-sizing: border-box}
+nav,
+svg#Logo,
+nav ul,
+section {
+  box-sizing: border-box;
+}
 
 nav {
   width: 100%;
 }
 nav ul {
   margin: 0;
-  padding: 0;
+  padding: var(--padding);
   list-style-type: none;
   position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: var(--padding);
+  column-gap: var(--half-padding);
 }
-nav li {text-align: center;}
+nav li {
+  text-align: center;
+}
 nav a {
   text-decoration: none;
   color: var(--light);
   padding: 0 var(--half-padding);
-  margin: 0 var( --half-padding) var( --padding) 0;
+  /* margin: 0 var( --half-padding) var( --padding) 0; */
   display: inline-block;
   background-color: var(--dark);
 }
 
-svg#Logo {max-width: calc(var(--logo-width) * 0.75);}
-svg#Logo path {fill: var(--light)}
-svg#Logo circle {fill: var(--dark)}
+svg#Logo {
+  max-width: calc(var(--logo-width) * 0.75);
+}
+svg#Logo path {
+  fill: var(--light);
+}
+svg#Logo circle {
+  fill: var(--dark);
+}
 
 section,
-footer {padding: var(--padding);}
+footer {
+  padding: var(--padding);
+}
 footer {
   display: flex;
   background-color: var(--dark);
@@ -147,17 +242,27 @@ footer {
   row-gap: var(--half-padding);
   column-gap: var(--padding);
 }
-footer, footer button {font-size: 0.8rem}
+footer,
+footer button {
+  font-size: 0.8rem;
+}
 button {
   border: 0;
-  padding: 0 var( --half-padding);
+  padding: 0 var(--half-padding);
   background-color: var(--light);
   color: var(--dark);
-  font-family: 'Lora', serif;
+  font-family: "Lora", serif;
 }
-footer a {color: var(--light)}
-footer p {margin: 0}
-footer .col:first-child {min-width: calc(var(--nav) - var(--half-padding))}
+footer a {
+  color: var(--light);
+}
+footer p {
+  margin: 0;
+}
+footer .col:first-child {
+  min-width: calc(var(--nav) - var(--half-padding));
+}
+/* footer .col:first-child {min-width: var(--nav)} */
 
 #toggle {
   z-index: 11;
@@ -165,7 +270,9 @@ footer .col:first-child {min-width: calc(var(--nav) - var(--half-padding))}
   right: var(--padding);
 }
 
-#menu {z-index: 10;}
+#menu {
+  z-index: 10;
+}
 
 #mob-nav {
   display: flex;
@@ -174,12 +281,18 @@ footer .col:first-child {min-width: calc(var(--nav) - var(--half-padding))}
 }
 
 @media screen and (max-width: 300px) {
-  header section p {font-size: 1.5rem;}
+  header section p {
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 735px) {
-  header {position: relative;}
-  nav {text-align: center}
+  header {
+    position: relative;
+  }
+  nav {
+    text-align: center;
+  }
   nav ul {
     margin: 0 0 0 100vw;
     transition: margin 1s;
@@ -191,7 +304,9 @@ footer .col:first-child {min-width: calc(var(--nav) - var(--half-padding))}
     flex-direction: column;
     justify-content: center;
   }
-  #mob-nav {padding: var(--padding);}
+  #mob-nav {
+    padding: var(--padding);
+  }
 }
 
 /* Tablet breakpoint */
@@ -205,9 +320,12 @@ footer .col:first-child {min-width: calc(var(--nav) - var(--half-padding))}
     align-self: flex-start;
     top: 0;
   }
-  svg#Logo {position: fixed;}
+  svg#Logo {
+    position: fixed;
+  }
   section {
-    width: calc(100% - var(--nav));
+    /* width: calc(100% - var(--nav)); */
+    width: var(--tablet-section);
     margin-left: var(--nav);
   }
   svg#Logo {
@@ -217,27 +335,44 @@ footer .col:first-child {min-width: calc(var(--nav) - var(--half-padding))}
     padding-left: var(--padding);
   }
   nav ul {
+    /* width: calc(var(--tablet-section) - var(--padding)); */
     width: var(--tablet-section);
-    margin-left: calc(var(--nav) + var(--padding));
-    margin-top: var(--padding);
+    /* margin-left: calc(var(--nav) + var(--padding)); */
+    margin-left: var(--nav);
+    /* margin-top: var(--padding); */
   }
-  nav ul li {display: inline-block;}
-  header section p {font-size: 2rem;}
-  #toggle {display: none;}
+  nav ul li {
+    display: inline-block;
+  }
+  header section p {
+    font-size: 2rem;
+  }
+  #toggle {
+    display: none;
+  }
   footer {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+  #mode {
+    text-align: right;
   }
 }
 
 /* Desktop breakpoint */
 @media screen and (min-width: 1080px) {
-  section {width: var(--desktop-section)}
+  section {
+    width: var(--desktop-section);
+  }
 }
 
-nav a:hover, button:hover, svg#Logo:hover {
+nav a:hover,
+button:hover,
+svg#Logo:hover {
   transform: rotate(2deg);
 }
+
+/* #moon-phase {white-space: nowrap;} */
 
 svg#NewMoon,
 svg#WaxCrescent,
@@ -248,12 +383,78 @@ svg#WaneGibb,
 svg#LastQuart,
 svg#WaneCrescent {
   max-height: 1em;
+  vertical-align: middle;
 }
 
-svg .light {
+svg#pomologen {
+  height: 4rem;
+}
+
+svg .light,
+svg#pomologen path {
   fill: var(--light);
 }
 
 svg .moon {
   fill: var(--dark);
+}
+
+svg#NewMoon > .moon {
+  fill: var(--light);
+  opacity: 0.1;
+}
+
+#mode {
+  display: block;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 2.8rem;
+  height: 1.4rem;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--dark);
+  /* -webkit-transition: .4s; */
+  /* transition: .4s; */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1rem;
+  width: 1rem;
+  left: 0.2rem;
+  bottom: 0.2rem;
+  background-color: var(--light);
+  /* -webkit-transition: .4s; */
+  /* transition: .4s; */
+}
+
+/* input:focus + .slider {
+  box-shadow: 0 0 1px var(--dark);
+} */
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(1.4rem);
+  -ms-transform: translateX(1.4rem);
+  transform: translateX(1.4rem);
+  /* background-color: var(--light); */
 }
