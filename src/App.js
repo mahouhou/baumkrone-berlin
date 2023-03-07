@@ -35,6 +35,21 @@ function App() {
   // Variable used by handleResize and handleMenu functions
   var nav = null;
 
+  const months = [
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
+  ];
+
   // Set up event listeners when DOM is ready
   useEffect(() => {
     // Touch event listeners
@@ -48,7 +63,8 @@ function App() {
     const width = document.querySelector("body").offsetWidth;
     setWidth(width);
     // Update today state
-    getLunarMonth();
+    // getLunarMonth();
+    newMoonPhase();
     // Update isDay state
     checkIsDay();
   }, []);
@@ -56,27 +72,77 @@ function App() {
   // Calculate which lunar month today is
   // Months are divided by New Moon
   // Then update today state with lunarMonth value
-  function getLunarMonth() {
-    const months = [
-      "january",
-      "february",
-      "march",
-      "april",
-      "may",
-      "june",
-      "july",
-      "august",
-      "september",
-      "october",
-      "november",
-      "december",
-    ];
-    let month = months[timeNow.getMonth()];
+  // function getLunarMonth() {
+  //   let monthInt = timeNow.getMonth();
+  //   let month = months[monthInt];
+  //   const moonObj = SunCalc.getMoonIllumination(timeNow);
+  //   const moonPhase = moonObj.phase;
+  //   const moonAngle = moonObj.angle;
+  //   // const waxWane = moonAngle >= 0 ? "wanes" : "waxes";
+  //   // var lunarMonth = month + "-" + waxWane;
+  //   // setToday(lunarMonth);
+  //   if (moonPhase > 0) {
+  //     if (moonAngle >= 0) {
+  //       //Waning
+  //       //Set theme to prev month
+  //       setToday(months[monthInt - 1])
+  //     } else {
+  //       //Waxing
+  //       //Reconsider this condition
+  //       if (timeNow.getDate() < 5 && moonPhase > 0.75) {
+  //         //Maybe blue moon
+  //         //Set theme to prev month
+  //         setToday(months[monthInt - 1])
+  //       } else {
+  //         //Set theme to this month
+  //         setToday(month)
+  //       }
+  //     }
+  //   } else {
+  //     //New moon
+  //     //Set theme to this month
+  //     setToday(month)
+  //   }
+  // }
+
+  function newMoonPhase() {
     const moonObj = SunCalc.getMoonIllumination(timeNow);
-    const moonAngle = moonObj.angle;
-    const waxWane = moonAngle >= 0 ? "wanes" : "waxes";
-    var lunarMonth = month + "-" + waxWane;
-    setToday(lunarMonth);
+    //Get today's moon phase as a decimal
+    const moonPhase = moonObj.phase;
+    //Approximate number of days in a lunar cycle
+    let moonMonth = 29.53;
+    //Get today's date (day only)
+    const m = timeNow.getDate();
+    //Get number of days in a month
+    function daysInMonth (month, year) { // Use 1 for January, 2 for February, etc.
+      return new Date(year, month, 0).getDate();
+    }
+    //Get number of days in current month
+    const dm = daysInMonth((timeNow.getMonth()+1), timeNow.getFullYear());
+    //Get number of days left in current month
+    const rm = dm - m;
+    //Calculate number of days left until new moon
+    function daysTilNew() {
+      return (1 - moonPhase)*moonMonth
+    }
+    //Number of days until next new moon
+    const n = daysTilNew();
+    //Current month as number
+    let monthInt = timeNow.getMonth();
+    //Name of current month
+    let month = months[monthInt];
+    if (moonPhase === 0) {
+        //Set theme to this month
+        setToday(month)
+    } else {
+      if (n < rm) {
+        //Set theme to prev month
+        setToday(months[monthInt - 1])
+      } else {
+        //Set theme to this month
+        setToday(month)
+      }
+    }
   }
 
   // Calculate whether it's day or night in Berlin

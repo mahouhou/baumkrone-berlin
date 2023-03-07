@@ -63,7 +63,101 @@
   --december-d: #005c09;
 }
 
-.january-waxes.day, .february-wanes.day {
+.january.day {
+  --light: var(--january-l);
+  --dark: var(--january-d);
+}
+.january.night {
+  --light: var(--january-d);
+  --dark: var(--january-l);
+}
+.february.day {
+  --light: var(--february-l);
+  --dark: var(--february-d);
+}
+.february.night {
+  --light: var(--february-d);
+  --dark: var(--february-l);
+}
+.march.day {
+  --light: var(--march-l);
+  --dark: var(--march-d);
+}
+.march.night {
+  --light: var(--march-d);
+  --dark: var(--march-l);
+}
+.april.day {
+  --light: var(--april-l);
+  --dark: var(--april-d);
+}
+.april.night {
+  --light: var(--april-d);
+  --dark: var(--april-l);
+}
+.may.day {
+  --light: var(--may-l);
+  --dark: var(--may-d);
+}
+.may.night {
+  --light: var(--may-d);
+  --dark: var(--may-l);
+}
+.june.day {
+  --light: var(--june-l);
+  --dark: var(--june-d);
+}
+.june.night {
+  --light: var(--june-d);
+  --dark: var(--june-l);
+}
+.july.day {
+  --light: var(--july-l);
+  --dark: var(--july-d);
+}
+.july.night {
+  --light: var(--july-d);
+  --dark: var(--july-l);
+}
+.august.day {
+  --light: var(--august-l);
+  --dark: var(--august-d);
+}
+.august.night {
+  --light: var(--august-d);
+  --dark: var(--august-l);
+}
+.september.day {
+  --light: var(--september-l);
+  --dark: var(--september-d);
+}
+.october.night {
+  --light: var(--october-d);
+  --dark: var(--october-l);
+}
+.october.night {
+  --light: var(--october-d);
+  --dark: var(--october-l);
+}
+.november.night {
+  --light: var(--november-d);
+  --dark: var(--november-l);
+}
+.november.night {
+  --light: var(--november-d);
+  --dark: var(--november-l);
+}
+.december.night {
+  --light: var(--december-d);
+  --dark: var(--december-l);
+}
+.december.night {
+  --light: var(--december-d);
+  --dark: var(--december-l);
+}
+
+
+/* .january-waxes.day, .february-wanes.day {
   --light: var(--january-l);
   --dark: var(--january-d);}
 .january-waxes.night, .february-wanes.night {
@@ -145,7 +239,7 @@
   --dark: var(--december-d);}
 .december-waxes.night, .january-wanes.night {
   --light: var(--december-d);
-  --dark: var(--december-l);}
+  --dark: var(--december-l);} */
 
 body {
   font-size: 16px;
