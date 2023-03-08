@@ -131,25 +131,29 @@
   --light: var(--september-l);
   --dark: var(--september-d);
 }
-.october.night {
-  --light: var(--october-d);
-  --dark: var(--october-l);
+.september.night {
+  --light: var(--september-d);
+  --dark: var(--september-l);
+}
+.october.day {
+  --light: var(--october-l);
+  --dark: var(--october-d);
 }
 .october.night {
   --light: var(--october-d);
   --dark: var(--october-l);
 }
-.november.night {
-  --light: var(--november-d);
-  --dark: var(--november-l);
+.november.day {
+  --light: var(--november-l);
+  --dark: var(--november-d);
 }
 .november.night {
   --light: var(--november-d);
   --dark: var(--november-l);
 }
-.december.night {
-  --light: var(--december-d);
-  --dark: var(--december-l);
+.december.day {
+  --light: var(--december-l);
+  --dark: var(--december-d);
 }
 .december.night {
   --light: var(--december-d);
