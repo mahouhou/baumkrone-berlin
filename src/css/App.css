@@ -259,6 +259,13 @@ footer,
 footer button {
   font-size: 0.8rem;
 }
+
+footer .col.badges {
+  display: flex;
+  column-gap: 0.5rem;
+  flex-direction: row;
+}
+
 button {
   border: 0;
   padding: 0 var(--half-padding);
@@ -377,6 +384,9 @@ footer .col:first-child {
   section {
     width: var(--desktop-section);
   }
+  footer .col:first-child {
+    width: calc(var(--nav) - var(--half-padding));
+  }
 }
 
 nav a:hover,
@@ -399,13 +409,19 @@ svg#WaneCrescent {
   vertical-align: middle;
 }
 
-svg#pomologen {
+svg#pomologen,
+svg#obstbaum {
   height: 4rem;
 }
 
 svg .light,
-svg#pomologen path {
+svg#pomologen path,
+svg#obstbaum {
   fill: var(--light);
+}
+
+svg#obstbaum {
+  border: solid 0.5px;
 }
 
 svg .moon {

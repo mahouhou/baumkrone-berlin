@@ -12,6 +12,7 @@ import { ReactComponent as WaneGibb } from "./images/moons/Moon-Phases-06.svg";
 import { ReactComponent as LastQuart } from "./images/moons/Moon-Phases-07.svg";
 import { ReactComponent as WaneCrescent } from "./images/moons/Moon-Phases-08.svg";
 import { ReactComponent as Pomologen } from "./images/pomologen-01.svg";
+import { ReactComponent as Obstbaum } from "./images/obstbaumschnittschule-01.svg";
 // https://github.com/mourner/suncalc
 
 function App() {
@@ -389,8 +390,9 @@ function App() {
             IMPRESSUM
           </a>
         </div>
-        <div className="col">
+        <div className="col badges">
           <Pomologen />
+          <Obstbaum />
         </div>
         <div className="col">
           <p>
