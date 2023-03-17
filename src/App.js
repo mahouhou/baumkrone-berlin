@@ -26,6 +26,8 @@ function App() {
   const [width, setWidth] = useState(undefined);
   // Day or night in Berlin
   const [isDay, setIsDay] = useState(true);
+  // Header background image
+  const [background, setBackground] = useState("");
 
   var SunCalc = require("suncalc");
   var timeNow = new Date();
@@ -70,6 +72,8 @@ function App() {
     newMoonPhase();
     // Update isDay state
     checkIsDay();
+    // Set background image
+    backgroundImage();
   }, []);
 
   // Calculate which lunar month today is
@@ -365,7 +369,7 @@ function App() {
     }
     var image = season + Math.floor((Math.random() * length) + 1);
     var imageSrc = `/images/season/${season}/${image}.jpg`;
-    return imageSrc;
+    setBackground(imageSrc);
   }
 
   // Map menuData to construct navigation
@@ -382,7 +386,7 @@ function App() {
 
   return (
     <div className={`App ${today + " " + (isDay ? "day" : "night")}`}>
-      <header style={{backgroundImage: `url(${backgroundImage()})`}}>
+      <header style={{backgroundImage: `url(${background})`}}>
         <nav>
           <div id="mob-nav">
             <Logo />
