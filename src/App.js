@@ -16,7 +16,7 @@ import { ReactComponent as Obstbaum } from "./images/obstbaumschnittschule-01.sv
 // https://github.com/mourner/suncalc
 
 function App() {
-  // Today's lunar month
+  // Today's month
   const [today, setToday] = useState("default");
   // Impressum component hidden by default
   const [impressum, setImpressum] = useState(false);
@@ -36,6 +36,8 @@ function App() {
   // Variable used by handleResize and handleMenu functions
   var nav = null;
 
+  //Current month as number
+  let monthInt = timeNow.getMonth();
   const months = [
     "january",
     "february",
@@ -128,8 +130,6 @@ function App() {
     }
     //Number of days until next new moon
     const n = daysTilNew();
-    //Current month as number
-    let monthInt = timeNow.getMonth();
     //Name of current month
     let month = months[monthInt];
     if (moonPhase === 0) {
@@ -329,6 +329,45 @@ function App() {
     setIsDay((prev) => !prev);
   }
 
+  function backgroundImage() {
+    let season, length;
+    switch (monthInt) {
+      case monthInt >= 3 && monthInt <= 5:
+        season = "spring";
+        break;
+      case monthInt >= 6 && monthInt <= 8:
+        season = "summer";
+        break;
+      case monthInt >= 9 && monthInt <= 11:
+        season = "autumn";
+        break;
+      case monthInt == 12 || monthInt == 1 || monthInt == 2:
+        season = "winter";
+        break;
+      default:
+        season = "spring";
+    }
+    switch (season) {
+      case "spring":
+        length = 8;
+        break;
+      case "summer":
+        length = 15;
+        break;
+      case "autumn":
+        length = 7;
+        break;
+      case "winter":
+        length = 20;
+        break;
+      default:
+        length = 7;
+    }
+    var image = season + Math.floor((Math.random() * length) + 1);
+    var imageSrc = `/images/season/${season}/${image}.jpg`;
+    return imageSrc;
+  }
+
   // Map menuData to construct navigation
   const Menu = menuData.map((li) => (
     <li key={li}>
@@ -343,7 +382,7 @@ function App() {
 
   return (
     <div className={`App ${today + " " + (isDay ? "day" : "night")}`}>
-      <header>
+      <header style={{backgroundImage: `url(${backgroundImage()})`}}>
         <nav>
           <div id="mob-nav">
             <Logo />
