@@ -27,39 +27,39 @@
   --march-d: #003709;
 
   /* Apr waxes/ May wanes */
-  --april-l: #c0e0b1;
-  --april-d: #201cff;
+  --april-l: #FFE3F2;
+  --april-d: #13C468;
 
   /* May waxes/ Jun wanes */
-  --may-l: #ffeaf5;
-  --may-d: #00c92c;
+  --may-l: #FFF1E6;
+  --may-d: #00C2FF;
 
   /* Jun waxes/ Jul wanes */
-  --june-l: #feffc6;
-  --june-d: #0085ff;
+  --june-l: #FFF965;
+  --june-d: #5135FF;
 
   /* Jul waxes/ Aug wanes */
   --july-l: #ffdc62;
   --july-d: #c90000;
 
   /* Aug waxes/ Sep wanes */
-  --august-l: #ffa450;
+  --august-l: #FFB26B;
   --august-d: #cd01a0;
 
   /* Sep waxes/ Oct wanes */
-  --september-l: #fffb8f;
-  --september-d: #7140ff;
+  --september-l: #CDCFFF;
+  --september-d: #008171;
 
   /* Oct waxes/ Nov wanes */
-  --october-l: #cdcfff;
-  --october-d: #008171;
+  --october-l: #FF5A27;
+  --october-d: #481E00;
 
   /* Nov waxes/ Dec wanes */
   --november-l: #f8ffe9;
-  --november-d: #9f0026;
+  --november-d: #FF003D;
 
   /* Dec waxes/ Jan wanes */
-  --december-l: #ff90a4;
+  --december-l: #FFB1BF;
   --december-d: #005c09;
 }
 
@@ -159,91 +159,6 @@
   --light: var(--december-d);
   --dark: var(--december-l);
 }
-
-
-/* .january-waxes.day, .february-wanes.day {
-  --light: var(--january-l);
-  --dark: var(--january-d);}
-.january-waxes.night, .february-wanes.night {
-  --light: var(--january-d);
-  --dark: var(--january-l);}
-
-.february-waxes.day, .march-wanes.day {
-  --light: var(--february-l);
-  --dark: var(--february-d);}
-.february-waxes.night, .march-wanes.night {
-  --light: var(--february-d);
-  --dark: var(--february-l);}
-
-.march-waxes.day, .april-wanes.day {
-  --light: var(--march-l);
-  --dark: var(--march-d);}
-.march-waxes.night, .april-wanes.night {
-  --light: var(--march-d);
-  --dark: var(--march-l);}
-
-.april-waxes.day, .may-wanes.day {
-  --light: var(--april-l);
-  --dark: var(--april-d);}
-.april-waxes.night, .may-wanes.night {
-  --light: var(--april-d);
-  --dark: var(--april-l);}
-
-.may-waxes.day, .june-wanes.day {
-  --light: var(--may-l);
-  --dark: var(--may-d);}
-.may-waxes.night, .june-wanes.night {
-  --light: var(--may-d);
-  --dark: var(--may-l);}
-
-.june-waxes.day, .july-wanes.day {
-  --light: var(--june-l);
-  --dark: var(--june-d);}
-.june-waxes.night, .july-wanes.night {
-  --light: var(--june-d);
-  --dark: var(--june-l);}
-
-.july-waxes.day, .august-wanes.day {
-  --light: var(--july-l);
-  --dark: var(--july-d);}
-.july-waxes.night, .august-wanes.night {
-  --light: var(--july-d);
-  --dark: var(--july-l);}
-
-.august-waxes.day, .september-wanes.day {
-  --light: var(--august-l);
-  --dark: var(--august-d);}
-.august-waxes.night, .september-wanes.night {
-  --light: var(--august-d);
-  --dark: var(--august-l);}
-
-.september-waxes.day, .october-wanes.day {
-  --light: var(--september-l);
-  --dark: var(--september-d);}
-.september-waxes.night, .october-wanes.night {
-  --light: var(--september-d);
-  --dark: var(--september-l);}
-
-.october-waxes.day, .november-wanes.day {
-  --light: var(--october-l);
-  --dark: var(--october-d);}
-.october-waxes.night, .november-wanes.night {
-  --light: var(--october-d);
-  --dark: var(--october-l);}
-
-.november-waxes.day, .december-wanes.day {
-  --light: var(--november-l);
-  --dark: var(--november-d);}
-.november-waxes.night, .december-wanes.night {
-  --light: var(--november-d);
-  --dark: var(--november-l);}
-
-.december-waxes.day, .january-wanes.day {
-  --light: var(--december-l);
-  --dark: var(--december-d);}
-.december-waxes.night, .january-wanes.night {
-  --light: var(--december-d);
-  --dark: var(--december-l);} */
 
 body {
   font-size: 16px;
