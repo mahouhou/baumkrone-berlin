@@ -365,12 +365,7 @@ function App() {
         </nav>
         <section>
           <p>
-            <span>
-              Jeder Baum ist einzigartig! Deshalb variieren die Preise für
-              unsere Leistungen- je nachdem, wie groß die Aufgabe. Rufen Sie an,
-              um einen gratis Beratungstermin auszumachen, vor Ort, an ihrem
-              Baum!
-            </span>
+            <span>Baumpflege mit Herz und Verstand</span>
           </p>
         </section>
       </header>
@@ -430,5 +425,5 @@ const menuData = [
   "BAUMPFLEGE",
   "OBSTBAUMPFLEGE",
   "FÄLLUNG UND PFLANZUNG",
-  "ÜBER UNS",
+  "TEAM",
 ];

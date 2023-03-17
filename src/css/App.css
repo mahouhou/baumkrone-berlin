@@ -186,7 +186,7 @@ header section {
   color: var(--light);
 }
 header section p {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 header section p,
@@ -358,7 +358,7 @@ footer .col:first-child {
     display: inline-block;
   }
   header section p {
-    font-size: 2rem;
+    font-size: 3rem;
   }
   #toggle {
     display: none;

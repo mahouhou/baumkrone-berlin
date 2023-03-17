@@ -1,6 +1,6 @@
 ## KONTAKT
 
-[info@baumkrone-berlin.de](mailto:info@baumkrone-berlin.de)  
+[info@baumkrone-berlin.de](mailto:info@baumkrone-berlin.de)     
 
 [0049-17647082847](tel:0049-17647082847)  
 
@@ -12,7 +12,7 @@ Jeder Baum ist einzigartig, ökologisch wertvoll und ein Habitat für eine Vielf
 
 Unser Ziel ist es, durch Baumpflege die Gesundheit und Langlebigkeit unserer Bäume zu fördern und gleichzeitig Sicherheit für die Menschen in ihrer Umgebung zu gewährleisten.
 
-Wir beraten Sie gerne!
+Gerne bieten wir Ihnen eine kostenlose Beratung an, vor Ort, an Ihrem Baum!
 
 ### Totholzentnahme
 
@@ -47,25 +47,24 @@ In den späteren Lebensphasen wirkt der Schnitt verjüngend und beugt somit eine
 Ihr liebster Obstbaum wird langsam alt, und Sie möchten ihn erhalten? Ihr Nachbar hat so einen leckeren Apfel, aber den bekommt man nicht in der Baumschule? Durch Veredelung können wir die Bäume duplizieren und die Arten erhalten. Im engen Stadtgarten können auch Mehrsortenbäume von Interesse sein, bei denen mehrere Sorten auf einer Unterlage veredelt werden. So können sie auf einem Baum vom Frühsommer bis Herbst ernten und eine Vielfalt von Sorten genießen.
 
 ### Pflanzung
-
-„Auch wenn ich wüsste, dass morgen die Welt untergeht, würde ich heute noch einen Apfelbaum pflanzen.“ – Martin Luther. Baumpflanzung ist Hoffnung und ein Generationsprojekt! Und Ihr Beitrag zu einer Nachhaltigen Welt.
+Jede Baumpflanzung ist ein Generationsprojekt und setzt ein Zeichen der Hoffnung. Und Ihr Beitrag zu einer Nachhaltigen Welt.
 
 ## FÄLLUNG UND PFLANZUNG
 
 ### Fällung
 
-Fällungen bieten wir vor allem mittels Seilklettertechnik an. Mit Hilfe von Ablasstechniken können wir eine sichere Fällung anbieten, auch in engen Räumen oder bei Sturmschäden. Kronenteile und Stamm können bei Bedarf kontrolliert abgeseilt werden um Garten und Haus zu schonen.
+Fällungen bieten wir mittels Seiltechnik oder falls Notwendig mit Einsatz von Hebebühnen an. Mit Hilfe von Ablasstechniken können wir eine sichere Fällung anbieten, auch in engen Räumen oder bei Sturmschäden. Kronenteile und Stamm können bei Bedarf kontrolliert abgeseilt werden um Garten und Haus zu schonen.
 
 ### Ausgleichspflanzung
 
 Wir stehen für Nachhaltigkeit und Umweltschutz, weshalb wir Sie vor der Fällung gerne zur Neupflanzung beraten. Falls ein neuer Baum auf ihrem Grundstück nicht in Frage kommt, organisieren wir für Sie die Ausgleichsplanzung bei der NGO Green Forest Fund. Zum CO2 Ausgleich sind bis zu 10 junge Bäume notwendig, um eine Fällung „gutzumachen“- wir bestehen auf mindestens eine Neupflanzung pro Fällung.
 
-## ÜBER UNS
+## TEAM
 
 ### Klara Waterman
 
-Ich arbeite nach Anstellung als Baumpflegerin nun selbstständig in diesem Bereich. Mit Erfahrung in der Baumpflege und Weiterbildung zur Obstbaumwärtin bringe ich das Wissen mit zur baumgerechten und sicheren Arbeit an ihren Bäumen.
+Ich arbeite nach Anstellung als Baumpflegerin nun selbstständig in diesem Bereich. Mit Erfahrung in der Baumpflege und Weiterbildung zur Obstbaumwärtin bringe ich das Wissen mit zur baumgerechten und sicheren Arbeit an ihren Bäumen. Zusätzlich bin ich als Ausbilderin an der Obstbaumschnittschule tätig. 
 
 ### Team
 
-Ich arbeite mit einem großen Netzwerk aus weiteren qualifizierten selbstständigen Baumpflegenden.
+Meine Arbeit wird durch ein großes Netzwerk aus weiteren qualifizierten und zuverlässigen selbstständigen Baumpflegenden unterstützt.
