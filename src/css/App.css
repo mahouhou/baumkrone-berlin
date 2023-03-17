@@ -374,6 +374,9 @@ footer .col:first-child {
     flex-direction: row;
     flex-wrap: wrap;
   }
+  footer .col:first-child {
+    width: calc(var(--nav) - var(--half-padding));
+  }
   #mode {
     text-align: right;
   }
@@ -383,9 +386,6 @@ footer .col:first-child {
 @media screen and (min-width: 1080px) {
   section {
     width: var(--desktop-section);
-  }
-  footer .col:first-child {
-    width: calc(var(--nav) - var(--half-padding));
   }
 }
 

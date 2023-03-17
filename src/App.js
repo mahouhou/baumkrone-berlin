@@ -31,6 +31,7 @@ function App() {
 
   var SunCalc = require("suncalc");
   var timeNow = new Date();
+  // var timeNow = new Date('2022-05-14T07:06:05.123');
 
   // Variables used by startTouch and moveTouch event handlers
   var initialX = null;
@@ -335,21 +336,18 @@ function App() {
 
   function backgroundImage() {
     let season, length;
-    switch (monthInt) {
-      case monthInt >= 3 && monthInt <= 5:
-        season = "spring";
-        break;
-      case monthInt >= 6 && monthInt <= 8:
-        season = "summer";
-        break;
-      case monthInt >= 9 && monthInt <= 11:
-        season = "autumn";
-        break;
-      case monthInt == 12 || monthInt == 1 || monthInt == 2:
-        season = "winter";
-        break;
-      default:
-        season = "spring";
+    const thisMonth = monthInt + 1;
+    if (thisMonth >= 3 && thisMonth <= 5) {
+      season = "spring";
+    }
+    else if (thisMonth >= 6 && thisMonth <= 8) {
+      season = "summer";
+    }
+    else if (thisMonth >= 9 && thisMonth <= 11) {
+      season = "autumn";
+    }
+    else {
+      season = "winter";
     }
     switch (season) {
       case "spring":
