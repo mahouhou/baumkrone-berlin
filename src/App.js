@@ -31,7 +31,7 @@ function App() {
 
   var SunCalc = require("suncalc");
   var timeNow = new Date();
-  // var timeNow = new Date("2022-03-30T12:06:05.123");
+  // var timeNow = new Date("2023-04-28T12:06:05.123");
 
   // Variables used by startTouch and moveTouch event handlers
   var initialX = null;
@@ -117,6 +117,7 @@ function App() {
     const moonObj = SunCalc.getMoonIllumination(timeNow);
     //Get today's moon phase as a decimal
     const moonPhase = moonObj.phase;
+    console.log(moonPhase);
     //Approximate number of days in a lunar cycle
     let moonMonth = 29.53;
     //Get today's date (day only)
@@ -176,35 +177,35 @@ function App() {
   function getMoonPhase() {
     const moonObj = SunCalc.getMoonIllumination(timeNow);
     const moonFraction = moonObj.phase;
-    if (moonFraction === 0) {
+    if (moonFraction <= 0.05 || moonFraction >= 0.95) {
       // New Moon
       return <NewMoon />;
     }
-    if (moonFraction > 0 && moonFraction < 0.25) {
+    if (moonFraction > 0.05 && moonFraction < 0.2) {
       // Waxing Crescent
       return <WaxCrescent />;
     }
-    if (moonFraction === 0.25) {
+    if (moonFraction >= 0.2 && moonFraction <= 0.3) {
       // First Quarter
       return <FirstQuart />;
     }
-    if (moonFraction > 0.25 && moonFraction < 0.5) {
+    if (moonFraction > 0.3 && moonFraction < 0.45) {
       // Waxing Moon
       return <WaxGibb />;
     }
-    if (moonFraction === 0.5) {
+    if (moonFraction >= 0.45 && moonFraction <= 0.55) {
       // Full Moon
       return <FullMoon />;
     }
-    if (moonFraction > 0.5 && moonFraction < 0.75) {
+    if (moonFraction > 0.55 && moonFraction < 0.7) {
       // Waning Moon
       return <WaneGibb />;
     }
-    if (moonFraction === 0.75) {
+    if (moonFraction >= 0.7 && moonFraction <= 0.8) {
       // Last Quarter
       return <LastQuart />;
     }
-    if (moonFraction > 0.75 && moonFraction < 1) {
+    if (moonFraction > 0.8 && moonFraction < 0.95) {
       // Waning Crescent
       return <WaneCrescent />;
     }
