@@ -184,6 +184,9 @@ header {
 }
 header section {
   color: var(--light);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 header section p {
   font-size: 2rem;
@@ -234,6 +237,7 @@ nav a {
 }
 
 svg#Logo {
+  width: var(--logo-width);
   max-width: calc(var(--logo-width) * 0.75);
 }
 svg#Logo path {
@@ -406,6 +410,7 @@ svg#WaneGibb,
 svg#LastQuart,
 svg#WaneCrescent {
   max-height: 1em;
+  width: 1em;
   vertical-align: middle;
 }
 

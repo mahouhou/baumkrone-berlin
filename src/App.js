@@ -31,7 +31,7 @@ function App() {
 
   var SunCalc = require("suncalc");
   var timeNow = new Date();
-  // var timeNow = new Date('2022-05-14T07:06:05.123');
+  // var timeNow = new Date("2022-03-30T12:06:05.123");
 
   // Variables used by startTouch and moveTouch event handlers
   var initialX = null;
@@ -122,31 +122,32 @@ function App() {
     //Get today's date (day only)
     const m = timeNow.getDate();
     //Get number of days in a month
-    function daysInMonth (month, year) { // Use 1 for January, 2 for February, etc.
+    function daysInMonth(month, year) {
+      // Use 1 for January, 2 for February, etc.
       return new Date(year, month, 0).getDate();
     }
     //Get number of days in current month
-    const dm = daysInMonth((timeNow.getMonth()+1), timeNow.getFullYear());
+    const dm = daysInMonth(timeNow.getMonth() + 1, timeNow.getFullYear());
     //Get number of days left in current month
     const rm = dm - m;
     //Calculate number of days left until new moon
     function daysTilNew() {
-      return (1 - moonPhase)*moonMonth
+      return (1 - moonPhase) * moonMonth;
     }
     //Number of days until next new moon
     const n = daysTilNew();
     //Name of current month
     let month = months[monthInt];
     if (moonPhase === 0) {
-        //Set theme to this month
-        setToday(month)
+      //Set theme to this month
+      setToday(month);
     } else {
       if (n < rm) {
         //Set theme to prev month
-        setToday(months[monthInt - 1])
+        setToday(months[monthInt - 1]);
       } else {
         //Set theme to this month
-        setToday(month)
+        setToday(month);
       }
     }
   }
@@ -175,7 +176,7 @@ function App() {
   function getMoonPhase() {
     const moonObj = SunCalc.getMoonIllumination(timeNow);
     const moonFraction = moonObj.phase;
-    if (moonFraction == 0) {
+    if (moonFraction === 0) {
       // New Moon
       return <NewMoon />;
     }
@@ -183,7 +184,7 @@ function App() {
       // Waxing Crescent
       return <WaxCrescent />;
     }
-    if (moonFraction == 0.25) {
+    if (moonFraction === 0.25) {
       // First Quarter
       return <FirstQuart />;
     }
@@ -191,7 +192,7 @@ function App() {
       // Waxing Moon
       return <WaxGibb />;
     }
-    if (moonFraction == 0.5) {
+    if (moonFraction === 0.5) {
       // Full Moon
       return <FullMoon />;
     }
@@ -199,7 +200,7 @@ function App() {
       // Waning Moon
       return <WaneGibb />;
     }
-    if (moonFraction == 0.75) {
+    if (moonFraction === 0.75) {
       // Last Quarter
       return <LastQuart />;
     }
@@ -243,7 +244,7 @@ function App() {
       // Set overflow back to auto
       body.style.overflowY = "auto";
     }
-  }, [menuOpen]);
+  }, [menuOpen, width]);
 
   // Runs every time menu nav buttons are clicked
   function handleMenu() {
@@ -332,21 +333,18 @@ function App() {
   const handleToggle = () => {
     console.log("toggled");
     setIsDay((prev) => !prev);
-  }
+  };
 
   function backgroundImage() {
     let season, length;
     const thisMonth = monthInt + 1;
     if (thisMonth >= 3 && thisMonth <= 5) {
       season = "spring";
-    }
-    else if (thisMonth >= 6 && thisMonth <= 8) {
+    } else if (thisMonth >= 6 && thisMonth <= 8) {
       season = "summer";
-    }
-    else if (thisMonth >= 9 && thisMonth <= 11) {
+    } else if (thisMonth >= 9 && thisMonth <= 11) {
       season = "autumn";
-    }
-    else {
+    } else {
       season = "winter";
     }
     switch (season) {
@@ -365,7 +363,7 @@ function App() {
       default:
         length = 7;
     }
-    var image = season + Math.floor((Math.random() * length) + 1);
+    var image = season + Math.floor(Math.random() * length + 1);
     var imageSrc = `/images/season/${season}/${image}.jpg`;
     setBackground(imageSrc);
   }
@@ -384,7 +382,7 @@ function App() {
 
   return (
     <div className={`App ${today + " " + (isDay ? "day" : "night")}`}>
-      <header style={{backgroundImage: `url(${background})`}}>
+      <header style={{ backgroundImage: `url(${background})` }}>
         <nav>
           <div id="mob-nav">
             <Logo />
@@ -396,10 +394,7 @@ function App() {
             {Menu}
             <li id="mode">
               <label className="switch">
-                <input
-                  type="checkbox"
-                  onClick={handleToggle}
-                />
+                <input type="checkbox" onClick={handleToggle} />
                 <span className="slider"></span>
               </label>
             </li>
@@ -440,6 +435,7 @@ function App() {
             Diese Website ist saisonal:{" "}
             <a
               target="_blank"
+              rel="noreferrer"
               href="https://github.com/mahouhou/baumkrone-berlin"
             >
               Auf Github ansehen
@@ -451,7 +447,11 @@ function App() {
           {/* <carbonbadge darkMode={true} /> */}
           <p>
             Design von{" "}
-            <a target="_blank" href="https://cascading-styles.com">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://cascading-styles.com"
+            >
               Cascading Styles
             </a>
           </p>
