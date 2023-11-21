@@ -8,6 +8,8 @@ Klara Waterman
 Kameruner Straße 49  
 13351 Berlin
 
+USt-Id Nr. DE357154558
+
 ### Vertreten durch:
 Klara Waterman
 
